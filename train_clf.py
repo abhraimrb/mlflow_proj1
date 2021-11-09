@@ -21,8 +21,8 @@ if __name__ == "__main__":
     np.random.seed(40)
 
     # Read the wine-quality csv file (make sure you're running this from the root of MLflow!)
-    loan_approval_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "clientes.csv")
-    data = pd.read_csv( loan_approval_path )
+    
+    data = pd.read_csv("/dbfs/FileStore/mlflow_proj/cust_data_processed.csv" )
 
     # Split the data into training and test sets. (0.75, 0.25) split.
     train, test = train_test_split(data)
