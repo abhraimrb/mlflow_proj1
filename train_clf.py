@@ -40,20 +40,21 @@ if __name__ == "__main__":
     with mlflow.start_run():
         
         model = LogisticRegression(C=C)
-        model.fit(X_train, y_train)
-        predictions =  model.predict(X_test)
-        mlflow.log_param("C", C)
+        model.fit(train_x, train_y)
+        predictions =  model.predict(test_y)
+        
     
-        test_accuracy = accuracy_score(y_test, predictions)
-        test_precision_score = precision_score(y_test, predictions)
-        test_recall_score = recall_score(y_test, predictions)
-        test_f1_score = f1_score(y_test, predictions)
-        auc_score = roc_auc_score(y_test, predictions)
+        test_accuracy = accuracy_score(test_y, predictions)
+        test_precision_score = precision_score(test_y, predictions)
+        test_recall_score = recall_score(test_y, predictions)
+        test_f1_score = f1_score(test_y, predictions)
+        auc_score = roc_auc_score(test_y, predictions)
         metrics = {"Test_accuracy": test_accuracy, "Test_precision_score": test_precision_score,
                    "Test_recall_score":test_recall_score,"Test_f1_score":test_f1_score, "auc score":auc_score}
     
   # Log the value of the metric from this run.
-        mlflow.log_metrics(metrics 
+        mlflow.log_param("C", C)       
+        mlflow.log_metrics(metrics) 
        
         mlflow.sklearn.log_model(model, "LR-tuned parameters-wo autolog")
         
