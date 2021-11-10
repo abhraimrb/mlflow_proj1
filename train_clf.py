@@ -38,7 +38,7 @@ if __name__ == "__main__":
     #l1_ratio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
 
     with mlflow.start_run():
-        C=0.5
+        
         model = LogisticRegression(C=C)
         model.fit(X_train, y_train)
         predictions =  model.predict(X_test)
@@ -53,14 +53,9 @@ if __name__ == "__main__":
                    "Test_recall_score":test_recall_score,"Test_f1_score":test_f1_score, "auc score":auc_score}
     
   # Log the value of the metric from this run.
-        mlflow.log_metrics(metrics )
-   
-    
-    #mlflow.set_tag("Classifier", "Random Forest")
-    
-       mlflow.set_tag("Classifier", "LR-tuned parameters-wo autolog")
+        mlflow.log_metrics(metrics 
        
-       mlflow.sklearn.log_model(model, "LR-tuned parameters-wo autolog")
+        mlflow.sklearn.log_model(model, "LR-tuned parameters-wo autolog")
         
         
 
