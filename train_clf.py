@@ -34,16 +34,11 @@ if __name__ == "__main__":
     train_y = train[["loan_approval_status"]]
     test_y = test[["loan_approval_status"]]
 
-    #C = float(sys.argv[1]) if len(sys.argv) > 1 else 0.5
-    #l1_ratio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
-
     with mlflow.start_run():
         
         model = LogisticRegression()
         model.fit(train_x, train_y)
         predictions =  model.predict(test_x)
-        
-    
         test_accuracy = accuracy_score(test_y, predictions)
         test_precision_score = precision_score(test_y, predictions)
         test_recall_score = recall_score(test_y, predictions)
@@ -57,6 +52,6 @@ if __name__ == "__main__":
        
         mlflow.sklearn.log_model(model, "LR-tuned parameters-wo autolog")
         
-        
-
+        run_id = mlflow.active_run().info.run_uuid
+        print("Run with id %s finished" % run_id)
         
