@@ -5,6 +5,7 @@ conda_env: conda.yaml
 entry_points:
   main:
     parameters:
-      data_file:"/dbfs/FileStore/mlflow_proj/cust_data_processed.csv"
       C: {type: float, default: 0.5}
     command: "python train_clf.py {C}"
+conda_env: conda.yaml
+
