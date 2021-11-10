@@ -41,7 +41,7 @@ if __name__ == "__main__":
         
         model = LogisticRegression(C=C)
         model.fit(train_x, train_y)
-        predictions =  model.predict(test_y)
+        predictions =  model.predict(test_x)
         
     
         test_accuracy = accuracy_score(test_y, predictions)
