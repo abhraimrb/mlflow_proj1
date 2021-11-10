@@ -53,7 +53,6 @@ if __name__ == "__main__":
                    "Test_recall_score":test_recall_score,"Test_f1_score":test_f1_score, "auc score":auc_score}
     
   # Log the value of the metric from this run.
-        mlflow.log_param("C", C)       
         mlflow.log_metrics(metrics) 
        
         mlflow.sklearn.log_model(model, "LR-tuned parameters-wo autolog")
