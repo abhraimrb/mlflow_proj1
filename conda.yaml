@@ -1,4 +1,4 @@
-name: tutorial
+name: mlflow_clf
 channels:
   - defaults
 dependencies:
