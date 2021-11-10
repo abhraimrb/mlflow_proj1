@@ -7,5 +7,5 @@ entry_points:
     parameters:
       C: {type: float, default: 0.5}
     command: "python train_clf.py {C}"
-conda_env: conda.yaml
+
 
